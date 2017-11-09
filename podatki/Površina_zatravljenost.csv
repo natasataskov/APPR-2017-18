@@ -1,0 +1,59 @@
+"Površina, število vinogradov in število sadik glede na zatravljenost tal, vinorodne dežele in okoliši, Slovenija, 2009 in 2015"
+
+" ";" ";"2009";" ";" ";"2015";" ";" "
+" ";" ";"Površina (ha)";"Število vinogradov";"Število sadik (v 1000)";"Površina (ha)";"Število vinogradov";"Število sadik (v 1000)"
+"SLOVENIJA"
+" ";"Nezatravljeno";2621.3;7498;8416.2;2156.7;7738;7144.3
+" ";"Zatravljeno";13732.9;35472;50497.9;13531.3;41735;50598.9
+"Podravje"
+" ";"Nezatravljeno";121.8;602;540.0;87.0;501;358.3
+" ";"Zatravljeno";6821.9;16050;25673.7;6428.7;18456;24444.0
+"Podravje- Štajerska Slovenija"
+" ";"Nezatravljeno";82.9;288;349.5;56.1;238;221.7
+" ";"Zatravljeno";6296.2;12831;23206.0;5934.8;14978;22270.4
+"Podravje- Prekmurje"
+" ";"Nezatravljeno";38.9;314;190.5;30.9;263;136.6
+" ";"Zatravljeno";525.7;3219;2467.6;493.8;3478;2173.6
+"Posavje"
+" ";"Nezatravljeno";62.8;394;289.8;45.7;321;194.7
+" ";"Zatravljeno";2683.2;13646;10972.8;2709.7;15865;10991.3
+"Posavje- Bizeljsko Sremiè"
+" ";"Nezatravljeno";15.9;55;69.7;10.8;45;42.5
+" ";"Zatravljeno";891.7;3002;3282.7;854.4;3245;3202.0
+"Posavje- Bela krajina"
+" ";"Nezatravljeno";19.7;137;84.7;12.2;89;52.6
+" ";"Zatravljeno";347.0;2218;1444.6;358.4;2634;1461.7
+"Posavje- Dolenjska"
+" ";"Nezatravljeno";27.2;202;135.4;22.6;187;99.7
+" ";"Zatravljeno";1444.5;8426;6245.6;1496.9;9986;6327.6
+"Primorje"
+" ";"Nezatravljeno";2435.9;6494;7581.7;2023.0;6905;6586.7
+" ";"Zatravljeno";4206.8;5591;13760.4;4368.4;7171;15065.9
+"Primorje- Slovenska Istra"
+" ";"Nezatravljeno";529.1;1445;1650.1;636.1;2659;1991.7
+" ";"Zatravljeno";1096.2;800;3570.3;1170.9;1613;3941.8
+"Primorje- Goriška brda (Brda)"
+" ";"Nezatravljeno";363.6;811;1097.4;202.4;483;663.9
+" ";"Zatravljeno";1534.4;2256;5240.1;1562.0;2459;5681.2
+"Primorje- Kras"
+" ";"Nezatravljeno";379.7;1592;1140.1;330.0;1531;1017.1
+" ";"Zatravljeno";213.3;553;672.6;245.2;718;805.5
+"Primorje- Vipavska dolina (Vipava)"
+" ";"Nezatravljeno";1163.5;2646;3694.2;854.5;2232;2914.0
+" ";"Zatravljeno";1362.8;1982;4277.4;1390.2;2381;4637.3
+"Izven vinorodnih okolišev"
+" ";"Nezatravljeno";0.8;8;4.7;1.1;11;4.6
+" ";"Zatravljeno";21.2;185;91.0;24.6;243;97.7
+
+"Vir: Statistièni urad Republike Slovenije. "
+" "
+"Zaradi zaokroževanja števil se seštevki ponekod ne ujemajo.  "
+"Podatki za leto 2009 so bili popravljeni (10.05.2016). Zarad tehniène "
+"napake, so bile zamenjane kategorije zatravljenosti tal. Za napako se "
+"opravièujemo."
+
+"Povezane vsebine: "
+"- (seznam "
+"HREF=http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatotek-"
+"e=8222 target=_blank) Metodološka pojasnila"
+

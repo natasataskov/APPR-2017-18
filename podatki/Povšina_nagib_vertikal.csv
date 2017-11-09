@@ -1,0 +1,28 @@
+"Površina in število vinogradov glede na nagib vertikal, vinorodne dežele in okoliši, Slovenija, 2009 in 2015"
+
+" ";"2009";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";"2015";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" "
+" ";"0%";" ";"nad 0% do 5%";" ";"nad 5% do 15%";" ";"nad 15% do 30%";" ";"nad 30% do 45%";" ";"nad 45%";" ";"0%";" ";"nad 0% do 5%";" ";"nad 5% do 15%";" ";"nad 15% do 30%";" ";"nad 30% do 45%";" ";"nad 45%";" "
+" ";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov";"Površina (ha)";"Število vinogradov"
+"SLOVENIJA";8.0;43;1084.3;2347;3254.2;8503;4752.0;14577;1538.5;6496;216.2;1421;10.9;48;876.0;1922;3126.5;9658;5154.5;17458;1663.3;8275;219.0;1876
+"Podravje";0.4;5;15.0;107;877.1;2824;3266.3;7508;1013.6;3159;174.8;997;z;z;z;z;615.6;2688;3382.0;8499;1058.1;4019;z;z
+"Podravje- Štajerska Slovenija";-;-;5.0;35;655.2;1349;3012.4;5958;964.2;2792;172.9;978;z;z;z;z;419.7;1182;3118.8;6755;1009.1;3637;z;z
+"Podravje- Prekmurje";0.4;5;9.9;72;221.9;1475;253.8;1550;49.4;367;1.9;19;-;-;4.5;33;195.9;1506;263.2;1744;49.0;382;2.3;27
+"Posavje";-;-;11.9;60;314.7;1491;1191.0;5966;510.6;3226;40.7;415;-;-;5.0;41;269.6;1463;1278.9;6964;583.0;4056;52.1;572
+"Posavje- Bizeljsko Sremiè";-;-;1.0;8;92.7;252;350.3;1192;132.6;599;6.0;47;-;-;0.6;8;69.9;216;379.2;1303;156.5;759;7.2;59
+"Posavje- Bela krajina";-;-;1.8;15;90.0;480;170.9;1181;23.5;229;0.9;15;-;-;0.9;10;73.6;480;197.2;1446;27.0;274;0.9;19
+"Posavje- Dolenjska";-;-;9.1;37;132.0;759;669.8;3593;354.4;2398;33.9;353;-;-;3.5;23;126.1;767;702.4;4215;399.5;3023;44.0;494
+"Primorje";7.6;38;1057.3;2177;2058.2;4159;283.3;994;z;z;z;z;z;z;z;z;2236.8;5473;482.1;1865;17.5;157;z;z
+"Primorje- Slovenska Istra";3.8;17;277.7;342;884.0;1007;156.4;415;3.0;30;-;-;z;z;261.0;495;923.4;1832;334.1;1108;z;86;z;z
+"Primorje- Goriška brda (Brda)";z;z;194.9;348;210.4;364;47.8;180;z;z;z;z;-;-;162.6;281;231.2;402;53.4;198;3.1;25;0.2;4
+"Primorje- Kras";-;-;182.7;638;354.0;1318;15.3;92;0.3;4;-;-;z;z;z;z;422.3;1646;20.6;137;z;z;-;-
+"Primorje- Vipavska dolina (Vipava)";z;z;402.0;849;609.8;1470;63.8;307;5.4;32;z;z;6.6;z;341.0;660;659.8;1593;74.0;422;z;z;z;z
+"Izven vinorodnih okolišev";-;-;0.2;3;4.3;29;11.4;109;z;z;z;z;-;-;0.9;10;4.5;34;11.5;130;4.6;43;0.3;5
+
+"Vir: Statistièni urad Republike Slovenije. "
+" "
+"Zaradi zaokroževanja števil se seštevki ponekod ne ujemajo."
+
+"- (seznam "
+"HREF=http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatotek-"
+"e=8196 target=_blank) Metodološka pojasnila"
+
