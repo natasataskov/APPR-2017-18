@@ -1,4 +1,4 @@
 # Podatki
 
-Tukaj bomo zbirali vse podatke (datoteke v obliki CSV, XML, ...), ki jih bo naš
-program uvozil.
+Začel sem z uvažavnjem *.csv* datotek, ki sem jih prenesel iz spletne strani Statističnega urada Republike Slovenije - [SURS](http://pxweb.stat.si/pxweb/Database/Okolje/Okolje.asp#15).
+

@@ -38,3 +38,4 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 * `gsubfn` - za delo z nizi (čiščenje podatkov)
 * `ggplot2` - za izrisovanje grafov
 * `extrafont` - za pravilen prikaz šumnikov (neobvezno)
+* `pdftools` - za obdelavo PDF datotek
