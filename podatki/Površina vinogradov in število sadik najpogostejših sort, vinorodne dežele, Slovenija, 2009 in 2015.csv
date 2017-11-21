@@ -1,42 +1,32 @@
-"Površina vinogradov in število sadik najpogostejših sort, vinorodne dežele, Slovenija, 2009 in 2015"
+"Povr?ina vinogradov in ?tevilo sadik najpogostej?ih sort, vinorodne de?ele, Slovenija, 2009 in 2015"
 
 " ";"2009";" ";" ";" ";" ";" ";" ";" ";" ";" ";"2015";" ";" ";" ";" ";" ";" ";" ";" ";" "
-" ";"SLOVENIJA";" ";"Podravje";" ";"Posavje";" ";"Primorje";" ";"Izven vinorodnih dežel";" ";"SLOVENIJA";" ";"Podravje";" ";"Posavje";" ";"Primorje";" ";"Izven vinorodnih dežel";" "
-" ";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)";"Površina (ha)";"Število sadik (v 1000)"
+" ";"SLOVENIJA";" ";"Podravje";" ";"Posavje";" ";"Primorje";" ";"Izven vinorodnih de?el";" ";"SLOVENIJA";" ";"Podravje";" ";"Posavje";" ";"Primorje";" ";"Izven vinorodnih de?el";" "
+" ";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)";"Povr?ina (ha)";"?tevilo sadik (v 1000)"
 "Bele sorte- Beli pinot";524.9;1931.7;305.4;1184.4;46.1;192.4;173.2;554.0;0.2;0.9;453.0;1703.4;265.2;1031.5;43.7;181.9;143.4;487.7;0.6;2.4
 "Bele sorte- Chardonnay";1208.2;4415.2;609.6;2353.3;59.0;252.5;538.7;1806.1;0.9;3.3;1150.4;4397.1;565.8;2235.8;61.8;266.9;521.9;1890.7;0.9;3.7
 "Bele sorte- Kraljevina";215.2;884.3;10.3;41.0;203.2;836.1;0.4;1.2;1.3;6.0;203.1;821.2;6.5;24.4;195.2;791.0;0.2;0.5;1.3;5.3
-"Bele sorte- Laški rizling";2360.1;8550.5;1780.1;6407.8;366.6;1466.2;210.6;663.7;2.8;12.8;1941.0;7168.2;1408.3;5140.6;354.8;1422.7;174.3;591.1;3.5;13.8
+"Bele sorte- La?ki rizling";2360.1;8550.5;1780.1;6407.8;366.6;1466.2;210.6;663.7;2.8;12.8;1941.0;7168.2;1408.3;5140.6;354.8;1422.7;174.3;591.1;3.5;13.8
 "Bele sorte- Malvazija";739.5;2176.8;z;z;1.3;5.9;738.2;2170.7;z;z;884.4;2772.7;z;z;1.3;5.5;882.9;2766.6;z;z
 "Bele sorte- Rebula";742.5;2276.2;z;z;z;z;z;z;-;-;613.1;2041.5;z;z;z;z;z;z;-;-
 "Bele sorte- Renski rizling";676.1;2540.0;641.2;z;32.9;z;1.6;z;0.4;1.9;619.1;2336.5;580.7;2178.8;35.7;147.3;2.0;7.7;0.8;2.8
-"Bele sorte- Rumeni muškat";429.3;1657.2;284.8;1145.6;39.3;167.8;104.8;341.8;0.5;1.9;554.4;2164.5;360.8;1431.1;57.9;246.5;135.2;484.7;0.5;2.2
+"Bele sorte- Rumeni mu?kat";429.3;1657.2;284.8;1145.6;39.3;167.8;104.8;341.8;0.5;1.9;554.4;2164.5;360.8;1431.1;57.9;246.5;135.2;484.7;0.5;2.2
 "Bele sorte- Sauvignon";1061.3;3836.6;603.2;2254.1;64.6;262.9;392.7;1315.8;0.9;3.9;1118.4;4197.9;684.4;2589.1;65.1;262.8;368.0;1342.1;0.9;3.9
 "Bele sorte- Sivi pinot";500.7;1961.5;233.5;952.9;z;79.9;248.4;z;z;z;493.8;1954.8;221.7;894.2;20.5;89.1;251.4;971.1;0.1;0.3
-"Bele sorte- Šipon";651.3;2348.3;630.9;2273.5;20.4;74.3;-;-;0.0;0.4;547.0;2033.2;529.3;1968.7;17.6;64.2;-;-;0.1;0.3
+"Bele sorte- ?ipon";651.3;2348.3;630.9;2273.5;20.4;74.3;-;-;0.0;0.4;547.0;2033.2;529.3;1968.7;17.6;64.2;-;-;0.1;0.3
 "Bele sorte- Traminec";228.8;820.5;222.0;790.5;6.3;27.9;0.2;0.6;0.3;1.5;223.5;843.2;214.3;805.2;8.6;36.0;0.2;0.6;0.3;1.3
 "Bele sorte- Zeleni silvanec";104.6;415.6;z;312.9;z;101.2;z;z;z;z;95.3;386.0;67.5;267.1;z;z;z;z;0.2;1.0
 "Ostale bele sorte";1804.1;6892.0;1075.9;4317.6;270.8;1123.0;454.6;1440.0;2.9;11.5;1895.4;7118.8;1142.7;4421.2;270.5;1068.1;478.5;1614.7;3.8;14.9
-"Rdeèe sorte- Barbera";138.8;446.6;z;z;z;z;138.7;445.7;-;-;103.1;365.3;z;z;z;z;103.0;365.0;-;-
-"Rdeèe sorte- Cabernet franc";48.2;170.9;z;z;-;-;z;z;-;-;46.7;174.0;-;-;z;z;z;z;-;-
-"Rdeèe sorte- Cabernet sauvignon";464.1;1678.2;0.9;3.7;0.2;0.9;463.0;1673.6;-;-;416.0;1556.3;z;z;1.1;4.9;412.9;1544.1;z;z
-"Rdeèe sorte- Merlot";996.5;3085.5;z;z;z;z;z;z;z;z;815.7;2644.0;z;z;0.4;2.4;814.2;2636.5;z;z
-"Rdeèe sorte- Modra frankinja";680.3;2681.2;166.1;618.4;511.1;2050.3;z;z;z;z;692.6;2768.2;165.6;645.9;523.3;2108.2;0.4;1.3;3.3;12.8
-"Rdeèe sorte- Modri pinot";182.3;732.7;114.4;474.0;z;80.7;48.6;z;z;z;209.8;829.8;z;z;22.1;93.6;60.0;226.5;z;z
-"Rdeèe sorte- Portugalka";15.4;60.9;1.5;4.9;13.9;56.0;-;-;-;-;13.4;54.0;z;z;12.1;49.4;-;-;z;z
-"Rdeèe sorte- Refošk";1291.7;4117.7;z;z;z;z;1291.6;4117.3;z;z;1321.0;4301.5;z;z;0.1;0.3;1320.8;4300.7;z;z
-"Rdeèe sorte- Zweigelt";34.6;142.7;29.3;119.7;5.1;22.2;-;-;0.2;0.8;40.3;168.8;33.4;139.4;6.7;28.7;-;-;0.2;0.8
-"Rdeèe sorte- Žametovka";913.4;3715.7;71.8;239.5;836.1;3449.8;z;z;z;z;857.2;3487.6;55.5;193.0;z;z;z;z;5.1;21.7
-"Rdeèe sorte- Syrah";24.7;92.3;-;-;z;z;z;z;-;-;24.2;91.6;z;z;z;z;z;z;-;-
-"Ostale rdeèe sorte";143.8;566.9;58.6;237.5;63.2;260.5;21.6;67.5;0.4;1.4;344.8;1324.4;77.5;293.6;229.4;912.3;34.7;105.7;3.2;12.9
+"Rde?e sorte- Barbera";138.8;446.6;z;z;z;z;138.7;445.7;-;-;103.1;365.3;z;z;z;z;103.0;365.0;-;-
+"Rde?e sorte- Cabernet franc";48.2;170.9;z;z;-;-;z;z;-;-;46.7;174.0;-;-;z;z;z;z;-;-
+"Rde?e sorte- Cabernet sauvignon";464.1;1678.2;0.9;3.7;0.2;0.9;463.0;1673.6;-;-;416.0;1556.3;z;z;1.1;4.9;412.9;1544.1;z;z
+"Rde?e sorte- Merlot";996.5;3085.5;z;z;z;z;z;z;z;z;815.7;2644.0;z;z;0.4;2.4;814.2;2636.5;z;z
+"Rde?e sorte- Modra frankinja";680.3;2681.2;166.1;618.4;511.1;2050.3;z;z;z;z;692.6;2768.2;165.6;645.9;523.3;2108.2;0.4;1.3;3.3;12.8
+"Rde?e sorte- Modri pinot";182.3;732.7;114.4;474.0;z;80.7;48.6;z;z;z;209.8;829.8;z;z;22.1;93.6;60.0;226.5;z;z
+"Rde?e sorte- Portugalka";15.4;60.9;1.5;4.9;13.9;56.0;-;-;-;-;13.4;54.0;z;z;12.1;49.4;-;-;z;z
+"Rde?e sorte- Refo?k";1291.7;4117.7;z;z;z;z;1291.6;4117.3;z;z;1321.0;4301.5;z;z;0.1;0.3;1320.8;4300.7;z;z
+"Rde?e sorte- Zweigelt";34.6;142.7;29.3;119.7;5.1;22.2;-;-;0.2;0.8;40.3;168.8;33.4;139.4;6.7;28.7;-;-;0.2;0.8
+"Rde?e sorte- ?ametovka";913.4;3715.7;71.8;239.5;836.1;3449.8;z;z;z;z;857.2;3487.6;55.5;193.0;z;z;z;z;5.1;21.7
+"Rde?e sorte- Syrah";24.7;92.3;-;-;z;z;z;z;-;-;24.2;91.6;z;z;z;z;z;z;-;-
+"Ostale rde?e sorte";143.8;566.9;58.6;237.5;63.2;260.5;21.6;67.5;0.4;1.4;344.8;1324.4;77.5;293.6;229.4;912.3;34.7;105.7;3.2;12.9
 "Ni podatka o sorti";173.9;716.6;22.2;84.4;143.7;607.6;5.5;15.1;2.5;9.5;11.4;38.7;4.5;16.2;2.4;9.3;4.3;12.5;0.2;0.7
-
-"Vir: Statistièni urad Republike Slovenije. "
-" "
-"Zaradi zaokroževanja števil se seštevki ponekod ne ujemajo."
-
-"Povezane vsebine: "
-"- (seznam "
-"HREF=http://www.stat.si/StatWeb/Common/PrikaziDokument.ashx?IdDatotek-"
-"e=8222 target=_blank) Metodološka pojasnila"
-
