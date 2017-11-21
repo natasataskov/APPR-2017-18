@@ -4,9 +4,10 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 ## Vinogradništvo in vinarstvo v Sloveniji
 
-Po tem, ko sem se odločil za vojo tematiko, sem na internetu poiskal podatke, kjer sem si pomagal predvsem s SURS, poleg tega pa še z wikipedio ter spletno stranjo sejma AGRA.
+Po tem, ko sem se odločil za vojo tematiko, sem na internetu poiskal podatke, kjer sem si pomagal predvsem s [SURS](http://www.stat.si/statweb), poleg tega pa še z [wikipedio](https://en.wikipedia.org/wiki/List_of_grape_varieties) ter spletno stranjo sejma [AGRA](http://www.pomurski-sejem.si/index.php/sl/rezultati2017).
 S svojim projektom želim raziskati obširno tematiko vinarstva ter vinogradništva v Sloveniji, predvsem s stališča samega izgleda vinogradov, torej podlage, na kateri rastejo, nagib vinogradov, njihova zatravljenost, ter seveda njihova velikost in razširjenost, po drugi strani pa bom pogeldal pridelavo grozdja v vinogradih in glede na to, pridelavo vina po sortah.
 Pri vsem bom upošteval razdeljenost po občinah ter vinorodnih deželah.
+Podatki, ki sem jih našel na SURS, se nanašajo na zelo različna leta in so zato problematični, saj se jih ne da lepo zdrušiti in/ ali primerjati.
 
 ## Program
 
