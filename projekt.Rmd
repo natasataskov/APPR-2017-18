@@ -35,7 +35,7 @@ source("uvoz/uvoz.r", encoding = "CP1250")
 1.
 Prvi del je prvi del mojega raziskovanja, torej vinogradi po zunanjem izgledu. Moja tabela bo imela 3 stolpce, 
 `Vinorodna dežela` - vinogradništvo bom razdelil na 4 regije, Primorsko, Podravsko, Posavsko ter zunaj vinorodnih območij,
-`Opisi zunanjih opazk` - Dejstva s katerimi se opisuje vinograde ,
+`Zunanje lastnosti` - Dejstva s katerimi se opisuje vinograde ,
 `Meritev` - Število,
 Opisi zunanjih opazk bo stolpec ki bo v sebi vseboval največ podatkov, med drugim;
   - `zatravljenost` - meritev: površina, razdeljeno na zatravljeno in nezatravljeno(število),
