@@ -4,8 +4,43 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+V projektu bom analizirala vpliv zdravstvene ureditve v povezavi s pričakovano življenjsko dobo v posameznih državah. Analizirala bom, kako dejavne so posamezne države na posameznih področjih v zdravstvu, kateri so glavni ponudniki zdravstvenih storitev in kakšna je shema financiranja zdravstva v posameznih državah. Cilj projekta je poiskati, kakšna ureditev zdravstvenega sistema je najbolj optimalna za državo.
+
+Tabela 1: PRIČAKOVANA ŽIVLJENJSKA DOBA
+
+    stolpec 1: država (niz)
+    stolpec 2: leto (število)
+    stolpec 3: spol (niz)
+    stolpec 4: starost (število)
+
+Tabela 2: IZDATKI ZA POSAMEZNE FUNKCIJE ZDRAVSTVENE NEGE
+
+    stolpec 1: država (niz)
+    stolpec 2: leto (število)
+    stolpec 3: funkcija (niz)
+
+Tabela 3: IZDATKI PONUDNIKOV ZDRAVSTVENIH STORITEV
+
+    stolpec 1: država (niz)
+    stolpec 2: leto (število)
+    stolpec 3: ponudniki (niz)
+
+Tabela 4: SHEME FINANCIRANJA ZDRAVSTVENIH STORITEV
+
+    stolpec 1: država (niz)
+    stolpec 2: leto (število)
+    stolpec 3: sheme financiranja (niz)
+
+Viri:
+
+    http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_mlexpec&lang=en
+
+    http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hc&lang=en
+
+    http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hp&lang=en
+
+    http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
+
 
 ## Program
 
