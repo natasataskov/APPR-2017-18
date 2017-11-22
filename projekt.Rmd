@@ -21,7 +21,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za svojo projektno nalogo bom raziskal vinogradništvo in vinarstvo v Sloveniji
+Za svojo projektno nalogo bom raziskal vinogradništvo v Sloveniji
 
 ***
 
