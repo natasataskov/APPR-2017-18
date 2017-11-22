@@ -9,6 +9,11 @@ S svojim projektom želim raziskati obširno tematiko vinogradništva v Slovenij
 Pri vsem bom upošteval razdeljenost po občinah ter vinorodnih deželah.
 Podatki, ki sem jih našel na SURS, se nanašajo na zelo različna leta in so zato problematični, saj se jih ne da lepo zdrušiti in/ ali primerjati. Velik problem je tudi nedostopnost podatkov, saj vsi podatki niso splošno dostopni, saj so poslovna tajnost, kar je bil tudi eden izmed razlogov, da nisem obravnaval tudi vinarstva. 
 
+Prvi del je prvi del mojega raziskovanja, torej vinogradi po zunanjem izgledu, kjer bom opazoval zunanje značilnosti, kot so na primer zatravljenost, nagib površine, število trt itd. V tabeli bom imel stolpce Vinorodna dežela, Zunanje lastnosti ter meritve. 
+Tudi v drugem delu raziskovanja bom imel tri stolpce, vendar bodo opisi oznak drugačni. Ponovno bom imel Vinorodno deželo, ter Meritev, osrednji stolpec pa bo Opis trt, kjer bom opisal starost ter sorte.
+Naloga pa bo vsebovala tudi dve primerjalni tabeli, in sicer tabelo sloevsnkih avtohtonih sort ter tabelo ekološke pridelave.
+
+
 
 ## Program
 
