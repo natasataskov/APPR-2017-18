@@ -32,26 +32,32 @@ source("uvoz/uvoz.r", encoding = "CP1250")
 ```
 
 
+1.
+Prvi del je prvi del mojega raziskovanja, torej vinogradi po zunanjem izgledu. Moja tabela bo imela 3 stolpce, 
+`Vinorodna dežela` - vinogradništvo bom razdelil na 4 regije, Primorsko, Podravsko, Posavsko ter zunaj vinorodnih območij,
+`Opisi zunanjih opazk` - Dejstva s katerimi se opisuje vinograde ,
+`Meritev` - Število,
+Opisi zunanjih opazk bo stolpec ki bo v sebi vseboval največ podatkov, med drugim;
+  - `zatravljenost` - meritev: površina, razdeljeno na zatravljeno in nezatravljeno(število),
+  - `nagib` - meritev: površina, razdeljeno na različne stopnje nagibov površja(število),
+  - `pridelovalci` - meritev: število pridelovalcev(število),
+  - `število vinogradov` - meritev: število vinogradov (število),
+  - `podlaga` - meritev: število trt, ki rastejo na določeni podlagi(število),
+ 
+  
+2. Tudi v drugem delu raziskovanja bom imel tri stolpce, vendar bodo opisi oznak drugačni.
+`Vinorodna dežela` - vinogradništvo bom razdelil na 4 regije, Primorsko, Podravsko, Posavsko ter zunaj vinorodnih območij,
+`Opisi trt` - Dejstva s katerimi se opisuje vinograde ,
+`Meritev` - Število,
+Opisi trt bo stolpec ki bo v sebi vseboval največ podatkov, med drugim;
+  - `sorta` - meritev: število trt določene sorte(število),
+  - `starost` - meritev: število trt določene starosti (število),
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+3. Za mojo nalogo bodo pomembne tudi dve primerjalne tabele, in sicer:
+  - Tabelo slovenskih avtohtonih sort
+  - Tabela ekološke pridelave 
+  
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
-
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
-
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 
 ```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
 ggplot(obcine, aes(x = naselja)) + geom_histogram() +
