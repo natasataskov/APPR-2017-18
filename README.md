@@ -13,6 +13,24 @@ Prvi del je prvi del mojega raziskovanja, torej vinogradi po zunanjem izgledu, k
 Tudi v drugem delu raziskovanja bom imel tri stolpce, vendar bodo opisi oznak drugačni. Ponovno bom imel Vinorodno deželo, ter Meritev, osrednji stolpec pa bo Opis trt, kjer bom opisal starost ter sorte.
 Naloga pa bo vsebovala tudi dve primerjalni tabeli, in sicer tabelo sloevsnkih avtohtonih sort ter tabelo ekološke pridelave.
 
+Prvi del je prvi del mojega raziskovanja, torej vinogradi po zunanjem izgledu. Moja tabela bo imela  vač stolpcev 
+`Vinorodna dežela` - vinogradništvo bom razdelil na 4 regije, Primorsko, Podravsko, Posavsko ter zunaj vinorodnih območij,
+  - `zatravljenost` - meritev: površina, razdeljeno na zatravljeno in nezatravljeno(število),
+  - `nagib` - meritev: površina, razdeljeno na različne stopnje nagibov površja(število),
+  - `pridelovalci` - meritev: število pridelovalcev(število),
+  - `število vinogradov` - meritev: število vinogradov (število),
+  - `podlaga` - meritev: število trt, ki rastejo na določeni podlagi(število),
+ 
+  
+2. Tudi v drugem delu raziskovanja bom imel tri stolpce, vendar bodo opisi oznak drugačni.
+`Vinorodna dežela` - vinogradništvo bom razdelil na 4 regije, Primorsko, Podravsko, Posavsko ter zunaj vinorodnih območij,
+  - `sorta` - meritev: število trt določene sorte(število),
+  - `starost` - meritev: število trt določene starosti (število),
+
+3. Za mojo nalogo bodo pomembne tudi dve primerjalne tabele, in sicer:
+  - Tabelo slovenskih avtohtonih sort
+  - Tabela ekološke pridelave 
+  
 
 
 ## Program
