@@ -2,7 +2,7 @@
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
-## Tematika
+## Vpliv ureditve zdravstvenega sistema na pričakovano življenjsko dobo
 
 V projektu bom analizirala vpliv zdravstvene ureditve v povezavi s pričakovano življenjsko dobo v posameznih državah. Analizirala bom, kako dejavne so posamezne države na posameznih področjih v zdravstvu, kateri so glavni ponudniki zdravstvenih storitev in kakšna je shema financiranja zdravstva v posameznih državah. Cilj projekta je poiskati, kakšna ureditev zdravstvenega sistema je najbolj optimalna za državo.
 
