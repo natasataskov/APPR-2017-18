@@ -9,37 +9,37 @@ V projektu bom analizirala vpliv zdravstvene ureditve v povezavi s pričakovano 
 Tabela 1: PRIČAKOVANA ŽIVLJENJSKA DOBA
 
  * stolpec 1: država (niz)
-    stolpec 2: leto (število)
-    stolpec 3: spol (niz)
-    stolpec 4: starost (število)
+ * stolpec 2: leto (število)
+ * stolpec 3: spol (niz)
+ * stolpec 4: starost (število)
 
 Tabela 2: IZDATKI ZA POSAMEZNE FUNKCIJE ZDRAVSTVENE NEGE
 
-    stolpec 1: država (niz)
-    stolpec 2: leto (število)
-    stolpec 3: funkcija (niz)
+ * stolpec 1: država (niz)
+ * stolpec 2: leto (število)
+ * stolpec 3: funkcija (niz)
 
 Tabela 3: IZDATKI PONUDNIKOV ZDRAVSTVENIH STORITEV
 
-    stolpec 1: država (niz)
-    stolpec 2: leto (število)
-    stolpec 3: ponudniki (niz)
+ * stolpec 1: država (niz)
+ * stolpec 2: leto (število)
+ * stolpec 3: ponudniki (niz)
 
 Tabela 4: SHEME FINANCIRANJA ZDRAVSTVENIH STORITEV
 
-    stolpec 1: država (niz)
-    stolpec 2: leto (število)
-    stolpec 3: sheme financiranja (niz)
+ * stolpec 1: država (niz)
+ * stolpec 2: leto (število)
+ * stolpec 3: sheme financiranja (niz)
 
 Viri:
 
-    http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_mlexpec&lang=en
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_mlexpec&lang=en
 
-    http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hc&lang=en
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hc&lang=en
 
-    http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hp&lang=en
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hp&lang=en
 
-    http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
 
 
 ## Program
