@@ -8,7 +8,7 @@ V projektu bom analizirala vpliv zdravstvene ureditve v povezavi s pričakovano 
 
 Tabela 1: PRIČAKOVANA ŽIVLJENJSKA DOBA
 
-    stolpec 1: država (niz)
+ * stolpec 1: država (niz)
     stolpec 2: leto (število)
     stolpec 3: spol (niz)
     stolpec 4: starost (število)
