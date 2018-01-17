@@ -1,54 +1,77 @@
-# 2. faza: Uvoz podatkov
+#2. faza: Uvoz podatkov
 
-sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
+require("readxl")
+require("dplyr")
+require("readr")
+require("tibble")
+require("tidyr")
 
-# Funkcija, ki uvozi občine iz Wikipedije
-uvozi.obcine <- function() {
-  link <- "http://sl.wikipedia.org/wiki/Seznam_ob%C4%8Din_v_Sloveniji"
-  stran <- html_session(link) %>% read_html()
-  tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
-    .[[1]] %>% html_table(dec = ",")
-  for (i in 1:ncol(tabela)) {
-    if (is.character(tabela[[i]])) {
-      Encoding(tabela[[i]]) <- "UTF-8"
-    }
-  }
-  colnames(tabela) <- c("obcina", "povrsina", "prebivalci", "gostota", "naselja",
-                        "ustanovitev", "pokrajina", "regija", "odcepitev")
-  tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
-  tabela$obcina[tabela$obcina == "Kanal ob Soči"] <- "Kanal"
-  tabela$obcina[tabela$obcina == "Loški potok"] <- "Loški Potok"
-  for (col in c("povrsina", "prebivalci", "gostota", "naselja", "ustanovitev")) {
-    tabela[[col]] <- parse_number(tabela[[col]], na = "-", locale = sl)
-  }
-  for (col in c("obcina", "pokrajina", "regija")) {
-    tabela[[col]] <- factor(tabela[[col]])
-  }
-  return(tabela)
+#uvoz 1. tabele: pricakovana zivljenjska doba
+uvoz.zivljenjska.doba <- function(){
+  pricakovana.zivljenjska.doba <- read_csv("podatki/zivljenjska.doba.csv",
+                                           col_names = c("Cas", "Drzava", "Spol", "Starost", "Enota", "Vrednost", "Opombe"),
+                                           locale = locale(encoding = "Windows-1250"),
+                                           skip = 1,
+                                           na= c("", ":")) %>% select(-Enota, -Opombe, -Starost) %>% drop_na()
+  
+  #pricakovana.zivljenjska.doba$Drzava <- as.factor(pricakovana.zivljenjska.doba$Drzava)
+  #pricakovana.zivljenjska.doba$Cas <- as.integer(pricakovana.zivljenjska.doba$Cas)
+  #pricakovana.zivljenjska.doba$Spol <- as.factor(pricakovana.zivljenjska.doba$Spol)
+  #pricakovana.zivljenjska.doba$Vrednost <- as.numeric(pricakovana.zivljenjska.doba$Vrednost)
+  return(pricakovana.zivljenjska.doba)
 }
 
-# Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvozi.druzine <- function(obcine) {
-  data <- read_csv2("podatki/druzine.csv", col_names = c("obcina", 1:4),
-                    locale = locale(encoding = "Windows-1250"))
-  data$obcina <- data$obcina %>% strapplyc("^([^/]*)") %>% unlist() %>%
-    strapplyc("([^ ]+)") %>% sapply(paste, collapse = " ") %>% unlist()
-  data$obcina[data$obcina == "Sveti Jurij"] <- "Sveti Jurij ob Ščavnici"
-  data <- data %>% melt(id.vars = "obcina", variable.name = "velikost.druzine",
-                        value.name = "stevilo.druzin")
-  data$velikost.druzine <- parse_number(data$velikost.druzine)
-  data$obcina <- factor(data$obcina, levels = obcine)
-  return(data)
+pricakovana.zivljenjska.doba <- uvoz.zivljenjska.doba()
+
+
+#uvoz 2. tabele: izdatki za posamezne funkcije zdravstvene nege
+uvoz.funkcije <- function(){
+  funkcije.zdravstvene.nege <- read_csv("podatki/funkcije.csv",
+                                        col_names = c("Cas", "Drzava","Enota", "Funkcija", "Vrednost", "Opombe"),
+                                        locale = locale(encoding = "Windows-1250"),
+                                        skip = 1,
+                                        na= c("", ":")) %>% select(-Enota, -Opombe) %>% drop_na()
+  
+  funkcije.zdravstvene.nege$Drzava <- as.factor(funkcije.zdravstvene.nege$Drzava)
+  funkcije.zdravstvene.nege$Cas <- as.integer(funkcije.zdravstvene.nege$Cas)
+  funkcije.zdravstvene.nege$Funkcija <- as.factor(funkcije.zdravstvene.nege$Funkcija)
+  funkcije.zdravstvene.nege$Vrednost <- as.numeric(funkcije.zdravstvene.nege$Vrednost)
+  return(funkcije.zdravstvene.nege)
 }
 
-# Zapišimo podatke v razpredelnico obcine
-obcine <- uvozi.obcine()
+funkcije.zdravstvene.nege <- uvoz.funkcije()
 
-# Zapišimo podatke v razpredelnico druzine.
-druzine <- uvozi.druzine(levels(obcine$obcina))
+#uvoz 3. tabele: izdatki ponudnikov zdravstvenih storitev
+uvoz.ponudniki <- function(){
+  ponudniki.zdravstvenih.storitev <- read_csv("podatki/ponudniki.csv",
+                                              col_names = c("Cas", "Drzava","Enota", "Ponudnik", "Vrednost", "Opombe"),
+                                              locale = locale(encoding = "Windows-1250"),
+                                              skip = 1,
+                                              na= c("", ":")) %>% select(-Enota, -Opombe) %>% drop_na()
+  
+  ponudniki.zdravstvenih.storitev$Drzava <- as.factor(ponudniki.zdravstvenih.storitev$Drzava)
+  ponudniki.zdravstvenih.storitev$Cas <- as.integer(ponudniki.zdravstvenih.storitev$Cas)
+  ponudniki.zdravstvenih.storitev$Ponudnik <- as.factor(ponudniki.zdravstvenih.storitev$Ponudnik)
+  ponudniki.zdravstvenih.storitev$Vrednost <- as.numeric(ponudniki.zdravstvenih.storitev$Vrednost)
+  return(ponudniki.zdravstvenih.storitev)
+}
 
-# Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
-# potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
-# datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
-# 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
-# fazah.
+ponudniki.zdravstvenih.storitev <- uvoz.ponudniki()
+
+#uvoz 4. tabele: Sheme financiranja zdravstvenih storitev
+require("httr")
+library("httr")
+link <- "http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en"
+stran <- POST(link) %>% content(as = "text")
+drzave <- stran %>% strapplyc('var yValues="([^"]+)"') %>% unlist() %>%
+  strapplyc("\\|([^|]+)\\|\\|") %>% unlist()
+
+leta <- stran %>% strapplyc('var xValues="([^"]+)"') %>% unlist() %>%
+  strapplyc("\\|TIME([0-9]+)\\|") %>% unlist() %>% parse_number()
+data <- stran %>% strapplyc('var dataValues="([^"]+)"') %>% unlist() %>%
+  strapplyc("([^|]+)\\|") %>% unlist() %>%
+  parse_number(na = c(":", "(p):", "(d):"),
+               locale = locale(decimal_mark = ".", grouping_mark = ","))
+tab <- data.frame(drzava = matrix(drzave, byrow = TRUE,
+                                  nrow = length(leta), ncol = length(drzave)) %>% as.vector(),
+                  leto = leta, vrednost = data)
