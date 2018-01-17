@@ -1,6 +1,6 @@
 ---
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+author: "Nataša Taškov"
 output:
   html_document: default
   pdf_document:
@@ -21,7 +21,43 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+V svojem projektu bom analizirala vpliv zdravstvene ureditve v povezavi s pričakovano življenjsko dobo v posameznih državah. Analizirala bom, kako dejavne so posamezne države na posameznih področjih v zdravstvu, kateri so glavni ponudniki zdravstvenih storitev in kakšna je shema financiranja zdravstva v posameznih državah. Cilj projekta je poiskati, kakšna ureditev zdravstvenega sistema je najbolj optimalna za državo.
+
+Tabela 1: PRIČAKOVANA ŽIVLJENJSKA DOBA
+
+*  stolpec 1: država (niz)
+*  stolpec 2: leto (število)
+*  stolpec 3: spol (niz)
+*  stolpec 4: starost (število)
+
+Tabela 2: IZDATKI ZA POSAMEZNE FUNKCIJE ZDRAVSTVENE NEGE
+
+*  stolpec 1: država (niz)
+*  stolpec 2: leto (število)
+*  stolpec 3: funkcija (niz)
+
+Tabela 3: IZDATKI PONUDNIKOV ZDRAVSTVENIH STORITEV
+
+*  stolpec 1: država (niz)
+*  stolpec 2: leto (število)
+*  stolpec 3: ponudniki (niz)
+
+Tabela 4: SHEME FINANCIRANJA ZDRAVSTVENIH STORITEV
+
+*  stolpec 1: država (niz)
+*  stolpec 2: leto (število)
+*  stolpec 3: sheme financiranja (niz)
+
+Viri:
+
+*  http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_mlexpec&lang=en
+
+*  http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hc&lang=en
+
+*  http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hp&lang=en
+
+*  http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
+
 
 ***
 
@@ -31,73 +67,49 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Podatke o pričakovani življenjski dobi, o izdatkih za posamezne funkcije zdravstvene nege, izdatkih ponidnikov zdravstvenih storitev in shemi financiranja zdravstvenih storitev sem uvozila iz Eurostata. Prve tri tabele sem uvozila v obliki CSV zadnjo tabelo pa v obliki HTML.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+```{r razpredelnice}
+kable(head(pricakovana.zivljenjska.doba))
+head(pricakovana.zivljenjska.doba)
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
+kable(head(funkcije.zdravstvene.nege))
+head(funkcije.zdravstvene.nege)
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
+kable(head(ponudniki.zdravstvenih.storitev))
+head(ponudniki.zdravstvenih.storitev)
 
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x = naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
+#kable(head(sheme.financiranja))
+#head(sheme.financiranja)
 ```
 
 ***
 
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
+```{r vizualizacija, echo=FALSE, message=FALSE}
+source("vizualizacija/zemljevid.R", encoding = "UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+Slika \ref{fig:zemljevid} prikazuje pričakovano življenjsko dobo za posamezno državo v letu 2015.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-ggplot() + geom_polygon(data = left_join(zemljevid, povprecja, by = c("OB_UIME" = "obcina")),
-                        aes(x = long, y = lat, group = group, fill = povprecje)) +
-  ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") +
-  guides(fill = guide_colorbar(title = "Povprečje"))
+```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid pričakovane življenjske dobe.'}
+ggplot() + geom_polygon(data = evropa %>% left_join(pricakovana.zivljenjska.doba %>%
+                                                      filter(Cas == 2015, Spol == "Total"),
+                                                    by = c("name_long" = "Drzava")),
+                        aes(x = long, y = lat, group = group, fill = Vrednost)) +
+  coord_map(xlim = c(-25, 45), ylim = c(32, 72))
 ```
 
-***
 
-# Napredna analiza podatkov
+Slika \ref{fig:zemljevid} prikazuje, za katero skupino funkcij zdravstvenih storitev so posamezne države namenile največ denarja.
 
-```{r analiza, echo=FALSE, message=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
-
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina = names(skupine),
-                                     skupina = factor(skupine)), by = "obcina")
-, aes(x = povrsina, y = naselja, color = skupina, size = prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color = guide_legend(title = "Skupina"),
-         size = guide_legend(title = "Prebivalci (* 1000)"))
-```
-
-***
-
-```{r shiny, echo = FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=600))
+```{r zem, echo=FALSE, fig.align='center', fig.cap='Zemljevid funkcij zdravstvene nege.'}
+ggplot() + geom_polygon(data = evropa %>%
+                          left_join(funkcije.zdravstvene.nege %>%
+                                      filter(Cas == 2014) %>%
+                                      group_by(Drzava) %>% top_n(1, Vrednost),
+                                    by = c("name_long" = "Drzava")),
+                        aes(x = long, y = lat, group = group, fill = Funkcija)) +
+  coord_map(xlim = c(-25, 45), ylim = c(32, 72))
 ```
