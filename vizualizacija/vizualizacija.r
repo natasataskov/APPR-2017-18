@@ -6,7 +6,7 @@ library(tibble)
 evropa <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
                           "ne_50m_admin_0_countries", encoding = "UTF-8") %>%
   pretvori.zemljevid() %>% filter(CONTINENT == "Europe" | SOVEREIGNT %in% c("Turkey", "Cyprus"),
-                                  NAME_LONG > -30, SOVEREIGNT != "Russia")
+                                  long > -30, SOVEREIGNT != "Russia")
 
 
 #pricakovana zivljenjska doba za posamezno drzavo v letu 2015

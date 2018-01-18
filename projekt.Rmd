@@ -95,7 +95,7 @@ Slika \ref{fig:zemljevid} prikazuje pričakovano življenjsko dobo za posamezno 
 ```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid pričakovane življenjske dobe.'}
 ggplot() + geom_polygon(data = evropa %>% left_join(pricakovana.zivljenjska.doba %>%
                                                       filter(Cas == 2015, Spol == "Total"),
-                                                    by = c("name_long" = "Drzava")),
+                                                    by = c("NAME_LONG" = "Drzava")),
                         aes(x = long, y = lat, group = group, fill = Vrednost)) +
   coord_map(xlim = c(-25, 45), ylim = c(32, 72))
 ```
@@ -108,7 +108,7 @@ ggplot() + geom_polygon(data = evropa %>%
                           left_join(funkcije.zdravstvene.nege %>%
                                       filter(Cas == 2014) %>%
                                       group_by(Drzava) %>% top_n(1, Vrednost),
-                                    by = c("name_long" = "Drzava")),
+                                    by = c("NAME_LONG" = "Drzava")),
                         aes(x = long, y = lat, group = group, fill = Funkcija)) +
   coord_map(xlim = c(-25, 45), ylim = c(32, 72))
 ```
