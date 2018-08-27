@@ -1,24 +1,15 @@
 library(shiny)
+library(ggplot2)
 
 shinyServer(function(input, output) {
-  output$druzine <- DT::renderDataTable({
-    dcast(druzine, obcina ~ velikost.druzine, value.var = "stevilo.druzin") %>%
-      rename(`Občina` = obcina)
-  })
-  
-  output$pokrajine <- renderUI(
-    selectInput("pokrajina", label="Izberi pokrajino",
-                choices=c("Vse", levels(obcine$pokrajina)))
-  )
-  output$naselja <- renderPlot({
-    main <- "Pogostost števila naselij"
-    if (!is.null(input$pokrajina) && input$pokrajina %in% levels(obcine$pokrajina)) {
-      t <- obcine %>% filter(pokrajina == input$pokrajina)
-      main <- paste(main, "v regiji", input$pokrajina)
-    } else {
-      t <- obcine
-    }
-    ggplot(t, aes(x = naselja)) + geom_histogram() +
-      ggtitle(main) + xlab("Število naselij") + ylab("Število občin")
+  output$zivlj1 <- renderPlot({
+    data <- pricakovana.zivljenjska.doba %>% filter(pricakovana.zivljenjska.doba$Leto==input$leto, 
+                                                    pricakovana.zivljenjska.doba$Spol==input$spol,
+                                                    pricakovana.zivljenjska.doba$Starost==input$starost)
+    ggplot(data, aes(x=data$Drzava, y=data$Vrednost)) +geom_point() + 
+      labs(xlab="Drzava", 
+           ylab="Pricakovana zivljenjska doba")
   })
 })
+
+

@@ -20,42 +20,46 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-V svojem projektu bom analizirala vpliv zdravstvene ureditve v povezavi s pričakovano življenjsko dobo v posameznih državah. Analizirala bom, kako dejavne so posamezne države na posameznih področjih v zdravstvu, kateri so glavni ponudniki zdravstvenih storitev in kakšna je shema financiranja zdravstva v posameznih državah. Cilj projekta je poiskati, kakšna ureditev zdravstvenega sistema je najbolj optimalna za državo.
+V projektu bom analizirala vpliv zdravstvene ureditve v povezavi s pričakovano življenjsko dobo v posameznih državah. Analizirala bom, kako dejavne so posamezne države na posameznih področjih v zdravstvu, kateri so glavni ponudniki zdravstvenih storitev in kakšna je shema financiranja zdravstva v posameznih državah. Cilj projekta je poiskati, kakšna ureditev zdravstvenega sistema je najbolj optimalna za državo.
 
 Tabela 1: PRIČAKOVANA ŽIVLJENJSKA DOBA
 
-*  stolpec 1: država (niz)
-*  stolpec 2: leto (število)
-*  stolpec 3: spol (niz)
-*  stolpec 4: starost (število)
+ * stolpec 1: Leto (število)
+ * stolpec 2: Država (faktor)
+ * stolpec 3: Spol (faktor)
+ * stolpec 4: Starost (število)
+ * stolpec 5: Pričakovana življenjska doba (realno število)
 
 Tabela 2: IZDATKI ZA POSAMEZNE FUNKCIJE ZDRAVSTVENE NEGE
 
-*  stolpec 1: država (niz)
-*  stolpec 2: leto (število)
-*  stolpec 3: funkcija (niz)
+ * stolpec 1: Leto (število)
+ * stolpec 2: Država (faktor)
+ * stolpec 3: Funkcija (faktor)
+ * stolpec 4: Izdatki za posamezno funkcijo (realno število)
 
 Tabela 3: IZDATKI PONUDNIKOV ZDRAVSTVENIH STORITEV
 
-*  stolpec 1: država (niz)
-*  stolpec 2: leto (število)
-*  stolpec 3: ponudniki (niz)
+ * stolpec 1: Leto (število)
+ * stolpec 2: Država (faktor)
+ * stolpec 3: Ponudnik (faktor)
+ * stolpec 4: Izdatki posameznih ponudnikov (realno število)
 
 Tabela 4: SHEME FINANCIRANJA ZDRAVSTVENIH STORITEV
 
-*  stolpec 1: država (niz)
-*  stolpec 2: leto (število)
-*  stolpec 3: sheme financiranja (niz)
+ * stolpec 1: Leto (število)
+ * stolpec 2: Država (faktor)
+ * stolpec 3: Shema financiranja (faktor)
+ * stolpec 4: Izdatki (realno število)
 
 Viri:
 
-*  http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_mlexpec&lang=en
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_mlexpec&lang=en
 
-*  http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hc&lang=en
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hc&lang=en
 
-*  http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hp&lang=en
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hp&lang=en
 
-*  http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
 
 
 ***
@@ -78,8 +82,8 @@ head(funkcije.zdravstvene.nege)
 kable(head(ponudniki.zdravstvenih.storitev))
 head(ponudniki.zdravstvenih.storitev)
 
-#kable(head(sheme.financiranja))
-#head(sheme.financiranja)
+kable(head(shema.financiranja))
+head(shema.financiranja)
 ```
 
 ***
@@ -87,14 +91,18 @@ head(ponudniki.zdravstvenih.storitev)
 # Analiza in vizualizacija podatkov
 
 ```{r vizualizacija, echo=FALSE, message=FALSE}
-source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
+#source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
 Slika \ref{fig:zemljevid} prikazuje pričakovano življenjsko dobo za posamezno državo v letu 2015.
 
 ```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid pričakovane življenjske dobe.'}
+evropa <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
+                          "ne_50m_admin_0_countries", encoding = "UTF-8") %>%
+  pretvori.zemljevid() %>% filter(CONTINENT == "Europe" | SOVEREIGNT %in% c("Turkey", "Cyprus"),
+                                  long > -30, SOVEREIGNT != "Russia")
 ggplot() + geom_polygon(data = evropa %>% left_join(pricakovana.zivljenjska.doba %>%
-                                                      filter(Cas == 2015, Spol == "Total"),
+                                                      filter(Leto == 2015, Spol == "Total"),
                                                     by = c("NAME_LONG" = "Drzava")),
                         aes(x = long, y = lat, group = group, fill = Vrednost)) +
   coord_map(xlim = c(-25, 45), ylim = c(32, 72))
@@ -106,9 +114,56 @@ Slika \ref{fig:zemljevid} prikazuje, za katero skupino funkcij zdravstvenih stor
 ```{r zem, echo=FALSE, fig.align='center', fig.cap='Zemljevid funkcij zdravstvene nege.'}
 ggplot() + geom_polygon(data = evropa %>%
                           left_join(funkcije.zdravstvene.nege %>%
-                                      filter(Cas == 2014) %>%
+                                      filter(Leto == 2014) %>%
                                       group_by(Drzava) %>% top_n(1, Vrednost),
                                     by = c("NAME_LONG" = "Drzava")),
                         aes(x = long, y = lat, group = group, fill = Funkcija)) +
   coord_map(xlim = c(-25, 45), ylim = c(32, 72))
 ```
+# Napredna analiza podatkov
+
+```{r analiza, echo=FALSE, message=FALSE}
+source("analiza/analiza.r", encoding = "UTF-8")
+```
+
+Spodnji tabeli prikazujeta prvih 6 držav z najdaljšo in najdaljšo življenjsko dobo.
+```{r razpredelnice1}
+kable(head(najkrajsa))
+head(najkrajsa)
+
+kable(head(najdaljsa))
+head(najdaljsa)
+```
+
+
+Sedaj si oglejmo analizo posebej za eno državo z najkrajšo življenjsko dobo in eno državo z najkrajšo življenjsko dobo. Izbrala sem Latvijo in Švico.
+
+Spodnji graf prikazuje kako se je spreminjala pričakovana življenjska doba v času za Švico in Latvijo. 
+
+```{r graf, echo=FALSE, fig.align='center', fig.cap='Zivljenjska doba  v casu za Latvijo in Svico'}
+g11
+```
+
+Naslednji graf prikazuje,koliko eurov na prebivalca je namenila posamezna država za zdravstveno nego v celoti v času, konkretno zopet za Latvijo in Švico.
+```{r graf1, echo=FALSE, fig.align='center', fig.cap='Zdravstvena nega za Latvijo in Svico'}
+g21
+```
+
+Spodnji histogram prikazuje odvisnost pričakovane življenjske dobe glede na starost posameznika.
+```{r graf2, echo=FALSE, fig.align='center', fig.cap='Zivljenjska doba glede na starost'}
+hist(t3$doba, xlab="Starost", ylab="Pricakovana zivljenjska doba",
+           main="")
+```
+
+Na koncu pa sledi še prikaz, koliko denarja posamezna država nameni za posameznega ponudnika zdravstvenih storitev. Konkretno za Švico in Latvijo.
+```{r graf3, echo=FALSE, fig.align='center', fig.cap='Ponudniki zdravstvenih storitev'}
+g41
+```
+
+***
+
+```{r shiny, echo = FALSE}
+shinyAppDir("shiny", options=list(width="100%", height=600))
+```
+
+

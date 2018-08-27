@@ -5,7 +5,7 @@ library(digest)
 gpclibPermit()
 
 # Funkcija uvozi.zemljevid(url, ime.zemljevida, pot.zemljevida,
-#                          encoding = NULL, force = FALSE)
+#                         encoding = "Windows-1250", force = FALSE)
 #
 # Funkcija najprej preveri, ali zemljevid na podani lokaciji že obstaja. Če
 # ne obstaja ali če je parameter force nastavljen na TRUE, pobere arhiv z
@@ -18,14 +18,14 @@ gpclibPermit()
 #   * mapa            Pot do mape, kamor naj se shrani zemljevid (privzeto
 #                     mapa "../zemljevid")
 #   * encoding        Kodiranje znakov v zemljevidu (privzeta vrednost
-#                     NULL, da se pretvorba ne opravi).
+#                     "Windows-1250").
 #   * force           Ali naj se zemljevid v vsakem primeru pobere z navedenega
 #                     naslova (privzeta vrednost FALSE).
 #
 # Vrača:
 #   * zemljevid (SpatialPolygonsDataFrame) iz pobranega arhiva
 uvozi.zemljevid <- function(url, pot.zemljevida, mapa = "../zemljevidi",
-                            encoding = NULL, force = FALSE) {
+                            encoding = "UTF-8", force = FALSE) {
   ime.zemljevida <- digest(url, algo = "sha1")
   map <- paste0(mapa, "/", ime.zemljevida)
   pot <- paste0(map, "/", pot.zemljevida)
@@ -49,13 +49,9 @@ uvozi.zemljevid <- function(url, pot.zemljevida, mapa = "../zemljevidi",
                                               collapse = "."))))
   zemljevid <- readShapeSpatial(shp)
   
-  if (!is.null(encoding)) {
-    loc <- locale(encoding = encoding)
-    for (col in names(zemljevid)) {
-      if (is.factor(zemljevid[[col]])) {
-        zemljevid[[col]] <- zemljevid[[col]] %>% as.character() %>%
-          parse_character(locale = loc) %>% factor()
-      }
+  for (col in names(zemljevid)) {
+    if (is.factor(zemljevid[[col]])) {
+      zemljevid[[col]] <- factor(iconv(zemljevid[[col]], encoding))
     }
   }
   
@@ -63,10 +59,10 @@ uvozi.zemljevid <- function(url, pot.zemljevida, mapa = "../zemljevidi",
 }
 
 # Primer uvoza zemljevida (slovenske občine)
-# obcine <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
-#                           "OB/OB", encoding = "Windows-1250")
+#obcine <- uvozi.zemljevid("http://e-prostor.gov.si/fileadmin/BREZPLACNI_POD/RPE/OB.zip",
+#                          "OB/OB", encoding = "Windows-1250")
 
-# Funkcija pretvori.zemljevid(podatki)
+# Funkcija pretvori.zemljevid(podatki, zemljevid, stolpec, novi = NULL)
 #
 # Funkcija pretvori zemljevid v obliko, ki jo lahko uporabimo pri risanju z ggplot2.
 #
