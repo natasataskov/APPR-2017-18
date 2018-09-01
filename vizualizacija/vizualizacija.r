@@ -12,15 +12,15 @@ evropa <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturaleart
 
 #pricakovana zivljenjska doba za posamezno drzavo v letu 2015
 ggplot() + geom_polygon(data = evropa %>% left_join(pricakovana.zivljenjska.doba %>%
-                                                      filter(Leto == 2015, Spol == "Total"),
+                                                      filter(Leto == 2015),
                                                     by = c("NAME_LONG" = "Drzava")),
                         aes(x = long, y = lat, group = group, fill = Vrednost)) +
   coord_map(xlim = c(-25, 45), ylim = c(32, 72))
 
 #za katero funkcijo posamezna drzva nameni najvec denarja
 ggplot() + geom_polygon(data = evropa %>% left_join(funkcije.zdravstvene.nege %>%
-                            filter(Leto == 2015, Spol == "Total"),
-                            by = c("name_long" = "Drzava")),
-                            summarise(funkcija = max(Funkcija)),
-                             aes(x = long, y = lat, group = group, fill = Vrednost)) +
-   coord_map(xlim = c(-25, 45), ylim = c(32, 72))
+                                                      filter(Leto == 2015),
+                                                    by = c("NAME_LONG" = "Drzava")),
+                        summarise(funkcija = max(Funkcija)),
+                        aes(x = long, y = lat, group = group, fill = Vrednost)) +
+  coord_map(xlim = c(-25, 45), ylim = c(32, 72))

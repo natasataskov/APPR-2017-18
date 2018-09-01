@@ -32,7 +32,7 @@ uvoz.zivljenjska.doba <- function(){
   #tab2$Starost <- NULL
   #tab2$star.kratke <- Starost
   #tab2$Starost <- as.integer(tab2$Starost)
-
+  
   #return(tab2)
   
   #pobrisemo vrstice, kjer so drzave, ki niso enake kot v ostalih tabelah
@@ -84,7 +84,7 @@ ponudniki.zdravstvenih.storitev <- uvoz.ponudniki()
 
 #uvoz 4. tabele: Sheme financiranja zdravstvenih storitev
 uvoz.shema <- function(){
-  link <- "http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do"
+  link <- "http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en"
   stran <- POST(link) %>% content(as = "text")
   drzave <- stran %>% strapplyc('var yValues="([^"]+)"') %>% unlist() %>%
     strapplyc("\\|([^|]+)\\|\\|") %>% unlist()
@@ -96,8 +96,8 @@ uvoz.shema <- function(){
     parse_number(na = c(":", "(p):", "(d):"),
                  locale = locale(decimal_mark = ".", grouping_mark = ","))
   shema.financiranja <- data.frame(Drzava = matrix(drzave, byrow = TRUE,
-                                    nrow = length(leta), ncol = length(drzave)) %>% as.vector(),
-                    Leto = leta, Vrednost = data)%>% drop_na()
+                                                   nrow = length(leta), ncol = length(drzave)) %>% as.vector(),
+                                   Leto = leta, Vrednost = data)%>% drop_na()
   return(shema.financiranja)
 }
 

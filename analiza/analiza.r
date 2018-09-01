@@ -12,16 +12,16 @@ najkrajsa <- head(arrange(t0, Povprecje))
 #graf pricakovane zivljenjske dobe v casu v vsaki drzavi
 t1 <- pricakovana.zivljenjska.doba %>% group_by(Drzava, Leto) %>% 
   summarise(Povprecje=mean(Vrednost))
-g1 <- ggplot(t1, aes(x=t1$Leto, 
-                 y=t1$Povprecje, color=Drzava)) +
+g1 <- ggplot(t1, aes(x=Leto, 
+                     y=Povprecje, color=Drzava)) +
   geom_path() + 
   labs(x="Leto", 
        y="Pricakovana zivljenjska doba")
 
 #konkretno samo za Latvijo in Svico
 t11 <- filter(t1, Drzava=="Latvia" | Drzava =="Switzerland")
-g11 <- ggplot(t11, aes(x=t11$Leto, 
-                     y=t11$Povprecje, color=Drzava)) +
+g11 <- ggplot(t11, aes(x=Leto, 
+                       y=Povprecje, color=Drzava)) +
   geom_path() + 
   labs(x="Leto", 
        y="Pricakovana zivljenjska doba")
@@ -32,16 +32,16 @@ g11 <- ggplot(t11, aes(x=t11$Leto,
 t2 <- funkcije.zdravstvene.nege %>% group_by(Drzava, Leto) %>% 
   summarise(Izdatki=sum(Vrednost))
 
-g2 <- ggplot(t2, aes(x=t2$Leto, 
-                     y=t2$Izdatki, color=Drzava)) +
+g2 <- ggplot(t2, aes(x=Leto, 
+                     y=Izdatki, color=Drzava)) +
   geom_path() + 
   labs(x="Leto", 
        y="Pricakovana zivljenjska doba")
 
 #konkretno samo za Latvijo in Svico
 t21 <- filter(t2, Drzava=="Latvia" | Drzava =="Switzerland")
-g21 <- ggplot(t21, aes(x=t21$Leto, 
-                     y=t21$Izdatki, color=Drzava)) +
+g21 <- ggplot(t21, aes(x=Leto, 
+                       y=Izdatki, color=Drzava)) +
   geom_path() + 
   labs(x="Leto", 
        y="Pricakovana zivljenjska doba")
@@ -57,16 +57,33 @@ g3 <- hist(t3$doba, xlab="Starost", ylab="Pricakovana zivljenjska doba",
 #zdravstvenih storitev
 t4 <- ponudniki.zdravstvenih.storitev %>% 
   group_by(Ponudnik, Drzava) %>% summarise(povprecje=mean(Vrednost))
-g4 <- ggplot(t4, aes(x=t4$Ponudnik, 
-                     y=t4$povprecje, color=Drzava)) +
+g4 <- ggplot(t4, aes(x=Ponudnik, 
+                     y=povprecje, color=Drzava)) +
   geom_point() + 
   labs(x="Ponudnik", 
        y="Izdatki")
 
 #konkretno samo za Latvijo in Svico
 t41 <- filter(t4, Drzava=="Latvia" | Drzava =="Switzerland")
-g41 <- ggplot(t41, aes(x=t41$Ponudnik, 
-                     y=t41$povprecje, color=Drzava)) +
+g41 <- ggplot(t41, aes(x=Ponudnik, 
+                       y=povprecje, color=Drzava)) +
   geom_point() + 
   labs(x="Ponudnik", 
-       y="Izdatki")
+       y="Izdatki") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+#graf koliko eurov na prebivalca posamezna drzava zapravi na leto pricakovane
+#zivljenjske dobe
+t50 <- funkcije.zdravstvene.nege %>% group_by(Drzava) %>% 
+  summarise(Izdatki=sum(Vrednost))
+t51 <- pricakovana.zivljenjska.doba %>% group_by(Drzava) %>% 
+  summarise(Zivljenjska.doba=mean(Vrednost))
+t5 <- t50 %>% inner_join(t51, by="Drzava")
+t5$Letni.izdatki <- t5$Izdatki/t5$Zivljenjska.doba
+t5 <- arrange(t5, Letni.izdatki)
+g5 <- ggplot(t5, aes(x=Drzava, y=Letni.izdatki)) + geom_point() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+
+
+

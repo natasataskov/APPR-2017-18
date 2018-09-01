@@ -3,12 +3,14 @@ library(ggplot2)
 
 shinyServer(function(input, output) {
   output$zivlj1 <- renderPlot({
-    data <- pricakovana.zivljenjska.doba %>% filter(pricakovana.zivljenjska.doba$Leto==input$leto, 
-                                                    pricakovana.zivljenjska.doba$Spol==input$spol,
-                                                    pricakovana.zivljenjska.doba$Starost==input$starost)
-    ggplot(data, aes(x=data$Drzava, y=data$Vrednost)) +geom_point() + 
+    data <- pricakovana.zivljenjska.doba %>% filter(Leto %in% input$leto, 
+                                                    Spol %in% input$spol,
+                                                    Starost %in% input$starost)
+    ggplot(data, aes(x=Drzava, y=Vrednost, color=Starost)) +
+      geom_point() + 
       labs(xlab="Drzava", 
-           ylab="Pricakovana zivljenjska doba")
+           ylab="Pricakovana zivljenjska doba") +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
   })
 })
 
