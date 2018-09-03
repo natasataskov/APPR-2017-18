@@ -12,7 +12,8 @@ evropa <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturaleart
 
 #zemljevid pricakovane zivljenjske dobe za posamezno drzavo v letu 2016
 z1 <- ggplot() + geom_polygon(data = evropa %>% left_join(pricakovana.zivljenjska.doba %>%
-                                                            filter(Leto == 2016),
+                                                            filter(Leto == 2016,
+                                                                   Starost =="Less than 1 year"),
                                                           by = c("NAME_LONG" = "Drzava")),
                               aes(x = long, y = lat, group = group, fill = Vrednost)) +
   coord_map(xlim = c(-25, 45), ylim = c(32, 72))
@@ -60,11 +61,3 @@ g2 <- ggplot(t2, aes(x=Leto,
   geom_path() + 
   labs(x="Leto", 
        y="Pricakovana zivljenjska doba")
-
-
-#histogram pricakovane zivljenjske dobe glede na starost
-t3 <- pricakovana.zivljenjska.doba %>%
-  group_by(Starost) %>% summarise(doba=mean(Vrednost))
-g3 <- ggplot(t3, aes(x=Starost,y=doba)) +
-  geom_histogram(stat="identity", position="dodge") + 
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))

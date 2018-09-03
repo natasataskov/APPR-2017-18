@@ -23,12 +23,12 @@ shinyServer(function(input, output) {
       theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
   })
   
-  #output$ponud <- renderPlot({
-  #  data <- ponudniki.zdravstvenih.storitev %>% filter(Leto %in% input$leto2, 
+  #output$shema <- renderPlot({
+  #  data <- shema.financiranja %>% filter(Leto %in% input$leto2, 
   #                                                  Drzava %in% input$drzava1)
-  #  ggplot(data, aes(x=Ponudnik, y=Vrednost, color=Drzava)) +
+  #  ggplot(data, aes(x=Shema, y=Vrednost, color=Drzava)) +
   #    geom_point() + 
-  #    labs(xlab="Ponudnik", 
+  #    labs(xlab="Shema", 
   #         ylab="Izdatki") +
   #    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
   #})

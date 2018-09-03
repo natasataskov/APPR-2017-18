@@ -24,7 +24,9 @@ drzave <- c("Lithuania", "Latvia", "Bulgaria", "Romania",
             "Spain", "Liechtenstein", "Italy", "Iceland")
 t52 <- t5 %>% filter(Drzava %in% drzave)
 g5 <- ggplot(t52, aes(x=reorder(Drzava,Zivlj.doba), y=Letni.izdatki)) + geom_point() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  xlab("Država") + ylab("Letni izdatki")
+
 
 
 #prejsnji tabeli se dodamo, koliko odstotkov izdatkov za zdravstvene storitve
@@ -47,7 +49,9 @@ t6$Vsota <- NULL
 #za posamezne drzave
 g6 <-  ggplot(t6, aes(x=Zivlj.doba, y=Letni.izdatki, label=Drzava)) +
   geom_point() + geom_text(aes(label=Drzava),hjust=1, vjust=1) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  xlab("Življenjska doba") + ylab("Izdatki za zdravstvo na leto življenja")
+
 
 #histogram prikazuje, koliko odstotkov nameni posamezna od izbranih drzav za 
 #posamezno shemo financiranja
@@ -55,7 +59,9 @@ t62 <- t6 %>% filter(Drzava %in% drzave)
 
 g7<- ggplot(t62, aes(x=reorder(Drzava,Zivlj.doba),y=Delez,fill=substring(Shema,2))) +
   geom_histogram(stat="identity", position="dodge") + 
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  xlab("Država") + ylab("Delež") + guides(fill = guide_legend("Shema")) +
+  theme(legend.position="bottom")
 
 
 

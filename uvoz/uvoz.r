@@ -82,6 +82,7 @@ uvoz.ponudniki <- function(){
   
   leta <- stran %>% strapplyc('var xValues="([^"]+)"') %>% unlist() %>% 
     strapplyc("\\|TIME([0-9]+)\\|") %>% unlist() %>% parse_number()
+  
   data <- stran %>% strapplyc('var dataValues="([^"]+)"') %>% unlist() %>%
     strapplyc("([^|]+)\\|") %>% unlist() %>%
     parse_number(na = c(":", "(p):", "(d):"),

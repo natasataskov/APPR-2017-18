@@ -19,10 +19,10 @@ shinyUI(fluidPage(
   plotOutput("funkc")
   
   
- # selectInput(inputId="leto2", label="Izberite leto", 
-#              choices=unique(ponudniki.zdravstvenih.storitev$Leto), selected= 2015),
- # selectInput(inputId="drzava1", label="Izberite drzavo", 
-#              choices=unique(ponudniki.zdravstvenih.storitev$Drzava), 
-#              multiple = TRUE, selected=ponudniki.zdravstvenih.storitev$Drzava),
-#  plotOutput("ponud")
+  #selectInput(inputId="leto2", label="Izberite leto", 
+  #            choices=unique(shema.financiranja$Leto), selected= 2015),
+  #selectInput(inputId="drzava1", label="Izberite drzavo", 
+  #            choices=unique(shema.financiranja$Drzava), 
+  #            multiple = TRUE, selected=shema.financiranja$Drzava),
+  #plotOutput("shema")
 ))
