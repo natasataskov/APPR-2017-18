@@ -28,7 +28,7 @@ Tabela 1: PRIČAKOVANA ŽIVLJENJSKA DOBA
  * stolpec 1: Leto (število)
  * stolpec 2: Država (faktor)
  * stolpec 3: Spol (faktor)
- * stolpec 4: Starost (število)
+ * stolpec 4: Starost (faktor)
  * stolpec 5: Pričakovana življenjska doba (realno število)
 
 Tabela 2: IZDATKI ZA POSAMEZNE FUNKCIJE ZDRAVSTVENE NEGE
@@ -38,29 +38,29 @@ Tabela 2: IZDATKI ZA POSAMEZNE FUNKCIJE ZDRAVSTVENE NEGE
  * stolpec 3: Funkcija (faktor)
  * stolpec 4: Izdatki za posamezno funkcijo (realno število)
 
-Tabela 3: IZDATKI PONUDNIKOV ZDRAVSTVENIH STORITEV
-
- * stolpec 1: Leto (število)
- * stolpec 2: Država (faktor)
- * stolpec 3: Ponudnik (faktor)
- * stolpec 4: Izdatki posameznih ponudnikov (realno število)
-
-Tabela 4: SHEME FINANCIRANJA ZDRAVSTVENIH STORITEV
+Tabela 3: SHEME FINANCIRANJA ZDRAVSTVENIH STORITEV
 
  * stolpec 1: Leto (število)
  * stolpec 2: Država (faktor)
  * stolpec 3: Shema financiranja (faktor)
  * stolpec 4: Izdatki (realno število)
 
+Tabela 4: IZDATKI PONUDNIKOV ZDRAVSTVENIH STORITEV
+
+ * stolpec 1: Leto (število)
+ * stolpec 2: Država (faktor)
+ * stolpec 3: Ponudnik (faktor)
+ * stolpec 4: Izdatki posameznih ponudnikov (realno število)
+
 Viri:
 
  * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_mlexpec&lang=en
 
  * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hc&lang=en
+ 
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
 
  * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hp&lang=en
-
- * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
 
 
 ***
@@ -71,16 +71,17 @@ Viri:
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Podatke o pričakovani življenjski dobi, o izdatkih za posamezne funkcije zdravstvene nege, izdatkih ponidnikov zdravstvenih storitev in shemi financiranja zdravstvenih storitev sem uvozila iz Eurostata. Prve tri tabele sem uvozila v obliki CSV zadnjo tabelo pa v obliki HTML.
+Podatke o pričakovani življenjski dobi, o izdatkih za posamezne funkcije zdravstvene nege, shemi financiranja zdravstvenih storitev in o izdatkih ponidnikov zdravstvenih storitev sem uvozila iz Eurostata. Prve tri tabele sem uvozila v obliki CSV zadnjo tabelo pa v obliki HTML.
 
 ```{r razpredelnice, message=FALSE, warning=FALSE}
 kable(head(pricakovana.zivljenjska.doba))
 
 kable(head(funkcije.zdravstvene.nege))
 
+kable(head(shema.financiranja))
+
 kable(head(ponudniki.zdravstvenih.storitev))
 
-kable(head(shema.financiranja))
 ```
 
 ***
@@ -88,72 +89,73 @@ kable(head(shema.financiranja))
 # Analiza in vizualizacija podatkov
 
 ```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE}
-#source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
+source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
-Slika \ref{fig:zemljevid} prikazuje pričakovano življenjsko dobo za posamezno državo v letu 2015.
+Na začetku bo predstavljeno, kakšna je pričakovana življenjska doba v posameznih državah. Najprej bo prikazan zemljevid, ki prazuje pričakovano življenjsko dobo za posamezno državo v letu 2016, sledita tabela šestih držav z najkrajšo življenjsko dobo ter tabela šestih držav z najdaljšo življenjsko dobo.
 
 ```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid pričakovane življenjske dobe.', message=FALSE, warning=FALSE}
-evropa <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
-                          "ne_50m_admin_0_countries", encoding = "UTF-8") %>%
-  pretvori.zemljevid() %>% filter(CONTINENT == "Europe" | SOVEREIGNT %in% c("Turkey", "Cyprus"),
-                                  long > -30, SOVEREIGNT != "Russia")
-ggplot() + geom_polygon(data = evropa %>% left_join(pricakovana.zivljenjska.doba %>%
-                                                      filter(Leto == 2015),
-                                                    by = c("NAME_LONG" = "Drzava")),
-                        aes(x = long, y = lat, group = group, fill = Vrednost)) +
-  coord_map(xlim = c(-25, 45), ylim = c(32, 72))
+z1
 ```
 
-
-Slika \ref{fig:zemljevid} prikazuje, za katero skupino funkcij zdravstvenih storitev so posamezne države namenile največ denarja.
-
-```{r zem, echo=FALSE, fig.align='center', fig.cap='Zemljevid funkcij zdravstvene nege.', message=FALSE, warning=FALSE}
-ggplot() + geom_polygon(data = evropa %>%
-                          left_join(funkcije.zdravstvene.nege %>%
-                                      filter(Leto == 2014) %>%
-                                      group_by(Drzava) %>% top_n(1, Vrednost),
-                                    by = c("NAME_LONG" = "Drzava")),
-                        aes(x = long, y = lat, group = group, fill = Funkcija)) +
-  coord_map(xlim = c(-25, 45), ylim = c(32, 72))
+```{r razpredelnice1, message=FALSE, warning=FALSE, fig.cap='Tabela držav z najkrajšo življenjsko dobo'}
+kable(head(najkrajsa))
 ```
+
+```{r razpredelnice2, message=FALSE, warning=FALSE, fig.cap='Tabela držav z najdaljšo življenjsko dobo'}
+kable(head(najdaljsa))
+```
+
+Iz zemljevida je razvidno, da imajo severnoevropske, južnoevropske in zahodnoevropske države praviloma višjo pričakovano življenjsko dobo, kot vzhodnoevropske in jugovzhodnoevropske države. Najnižjo življenjsko dobo ima Ukrajina, katere pričakovana življenjska doba je okoli 73 let, najvišjo življenjsko dobo pa ima Švica, katere pričakovana življenjska doba je okoli 83 let. Razlika je torej kar 10 let. Opaziti se da tudi, da imajo praviloma bogatejše države višjo pričakovano življenjsko dobo kot revnejše države. Iz tega opažanja se da sklepati, da je denar dejavnik, ki vpriva na pričakovano življenjsko dobo. Zato me je nadalje zanimalo, ali ima kakšno povezavo na življenjsko dobo tudi količina denarja, ki ga država nameni za zdravstvo.
+
+
 # Napredna analiza podatkov
 
 ```{r analiza, echo=FALSE, message=FALSE, warning=FALSE}
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
-Spodnji tabeli prikazujeta prvih 6 držav z najdaljšo in najdaljšo življenjsko dobo.
-```{r razpredelnice1, message=FALSE, warning=FALSE}
-kable(head(najkrajsa))
+Sedaj se osredotočimo le na skupino držav, ki imajo najdaljšo življenjsko dobo in skupino držav, ki imajo najkrajšo življenjsko dobo. Za države z daljšo življenjsko dobo sem si izbrala Španijo, Lihtenštajn, Italijo in Islandijo, za države s krajšo življenjsko dobo pa Litvo, Latvijo, Bolgarijo in Romunijo. 
+Najprej bo predstavljeno, koliko denarja posamezna država nameni za zdravstvene storitve. Podatki so urejeni tako da od leve proti desni narašča pričakovana življenjska doba. 
 
-kable(head(najdaljsa))
+```{r graf, echo=FALSE, fig.align='center', fig.cap='Letni izdatki za zdravstvene storitve po državah od najkrajše do najdaljše pričakovane življenjske dobe', message=FALSE, warning=FALSE}
+print(g5)
 ```
 
+Iz zgornjega grafa se lepo opazi, da države z daljšo pričakovano življenjsko dobo namenijo več denarja za zdravstvene storitve, kot države s krajšo življenjsko dobo. Vendar več denarja ne pomeni nujno daljše pričakovane življenjske dobe. Na primer Lihtenštajn daje veliko več denarja za zdravstvene storitve kot Španija, vendar ima vseeno Španija nekoliko daljšo življenjsko dobo. Prav tako lahko podobno opazimo pri državah s krajšo življenjsko dobo. Opazimo tudi, da so pri državah z daljšo življenjsko dobo precej večje variabilnosti v izdatkih za zdravstvene storitve, kot pri državah s krajšo življenjsko dobo. Iz tega se lahko vprašamo, ali je smiselno dati toliko več denarja za tako majhno spremembo v podaljšanju življenjske dobe. Zato si sedaj oglejmo, kako učinkovito države porabijo denar za zdravstvene storitve glede na življenjsko dobo.
 
-Sedaj si oglejmo analizo posebej za eno državo z najkrajšo življenjsko dobo in eno državo z najkrajšo življenjsko dobo. Izbrala sem Latvijo in Švico.
+Za analizo povezave med pričakovano življenjsko dobo in izdatki za zdravstvene funkcije sem zato uporabila enoto količina izdatkov za vse zdravstvene funkcije na prebivalca za eno leto življenja.
 
-Spodnji graf prikazuje kako se je spreminjala pričakovana življenjska doba v času za Švico in Latvijo. 
+Spodnji graf prikazuje količino izdatkov na prebivalca na leto življenja v povezavi z življenjsko dobo za posamezne države.
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Zivljenjska doba  v casu za Latvijo in Svico', message=FALSE, warning=FALSE}
-g11
+```{r graf1, echo=FALSE, fig.align='center', fig.cap='Izdatki za zdravstvene storitve na prebivalca na leto življenja glede na pričakovano življenjsko dobo', message=FALSE, warning=FALSE}
+print(g6)
 ```
 
-Naslednji graf prikazuje,koliko eurov na prebivalca je namenila posamezna država za zdravstveno nego v celoti v času, konkretno zopet za Latvijo in Švico.
-```{r graf1, echo=FALSE, fig.align='center', fig.cap='Zdravstvena nega za Latvijo in Svico', message=FALSE, warning=FALSE}
-g21
+Če zgornji graf razdelimo na štiri dele, dobimo štiri kategorije držav. 
+
+Spodaj levo so države, ki ne namenijo veliko sredstev za zdravstvene funkcije in imajo hkrati krajšo življenjsko dobo. Med te države sodijo na primer Litva, Latvija, Bolgarija, Romunija in Madžarska. V tej skupini držav je jasno, da zaradi manj vloženih sredstev v zdravstvo tudi ljudje manj časa živijo. 
+
+Spodaj desno je skupina držav, ki bodisi vlagajo veliko sredstev v zdravstvo, a imajo kljub temu krajšo življenjsko dobo, bodisi imajo daljšo življenjsko dobo, a ne vlagajo veliko sredstev v zdravstvo. Prva skupina slabo izkorišča denar, ki ga nameni v zdravstvene storitve, medtem ko druga skupina zelo racionalno ravna s tem denarjem. Če bi prva skupina namenila dodaten denar v zdravstvene storitve, nebi kaj dosti ali pa popolnoma nič podaljšala pričakovane življenjske dobe, medtem ko bi druga skupina že z malo dodatnega denarja dvignila pričakovano življenjsko dobo. V prvo skupino spadajo predvsem Grčija, Portugalska, Ciper in Slovenija, v drugo pa Italija, Španija in Islandija. 
+
+Zgoraj desno so države, ki imajo daljšo življenjsko dobo in dajejo veliko denarja za zdravstvene storitve. Mednje sodijo Lihtenštajn, Norveška, Luksemburg in Švedska. Te države porabijo veliko denarja za zdravstvo, nekatere, na primer Lihtenštajn, porabijo veliko več kot ostale države, vendar s tem ne podaljšajo življenjske dobe toliko, kot bi si morda želeli.
+
+Zdoraj levo naj bi bile države, ki imajo kratko življenjsko dobo in dajejo veliko denarja v zdravstvene storitve. Teh držav na grafu ni, kar potrjuje domnevo, da se življenjska doba daljša z večanjem količine sredstev za zdravstvene storitve.
+
+Iz tega lahko zaključimo, da obstaja neka pozitivna korelacija med pričakovano življenjsko dobo in izdatki za funkcije zdravstvenih storitev. Kako močna je ta povezava pa je odvisno od tega, kako učinkovito posamezna država vlaga denar oziroma od razvitosti zdravstvenega sistema. Zato si bomo v nadaljevanju pogledali sheme financiranja posameznih držav.
+
+Spodnji histogram prikazuje, kolikšen delež denarja nameni država za posamezno shemo financiranja. Imamo štiri osnovne sheme: državne sheme in sheme financiranja obveznih prispevkov za zdravstveno nego, sistemi prostovoljnega zdravstvenega zavarovanja, samoplačništvo ter preosrali svetovni finančni načrti za nerezidente. Zaradi boljše preglednosti je na histogramu narisanih le nekaj držav z najdaljšo življenjsko dobo in nekaj držav z najkrajšo življenjsko dobo.Podatki so zoper urejeni, tako da od leve proti desni narašča pričakovana življenjska doba.
+
+```{r graf2, echo=FALSE, fig.align='center', fig.cap='Delež sredstev, namenjenih za posamezno shemo financiranja', message=FALSE, warning=FALSE}
+print(g7)
 ```
 
-Spodnji histogram prikazuje odvisnost pričakovane življenjske dobe glede na starost posameznika.
-```{r graf2, echo=FALSE, fig.align='center', fig.cap='Zivljenjska doba glede na starost', message=FALSE, warning=FALSE}
-hist(t3$doba, xlab="Starost", ylab="Pricakovana zivljenjska doba",
-           main="")
-```
+Opazimo lahko, da je dalelč največji delež shem financiranja v državnih shemah in obveznem zdravstvenem zavarovanju. Države z višjo pričakovano življenjsko dobo imajo tudi večji delež v državnem zdravstvu, vendar je ta povezava zelo šibka. Vidimo pa, da se z daljšanjem življenjske dobe zmanjšuje odstotek samoplačništva. Ta podatek se mi zdi smiselen, saj imajo države z daljšo življenjsko dobo dobro urejen zdravstveni sistem, zaradi česar se ljudem ni potrebno toliko zatekati v samoplačništvo. Opazimo tudi, da se delež prostovoljnega zdravstvenega zavarovanja z življenjsko dobo veča, kar je logično, saj je tam za državljane dobro poskrbljeno in imajo zaupanje v zdravstvene storitve.
 
-Na koncu pa sledi še prikaz, koliko denarja posamezna država nameni za posameznega ponudnika zdravstvenih storitev. Konkretno za Švico in Latvijo.
-```{r graf3, echo=FALSE, fig.align='center', fig.cap='Ponudniki zdravstvenih storitev', message=FALSE, warning=FALSE}
-g41
-```
+#Povzetek
+Na pričakovano življenjsko dobo vpliva količina izdatkov za funkcije zdravstvene nege. Višji kot so ti izdatki, daljša je pričakovana življenjska doba. Ni pa nujno, da se z večanjem izdatkov življenjska doba povečuje tako hitro, kot bi si želeli. Tu je zelo pomembno, kako učinkovito država vlaga denar v zdravstvo. Države namreč lahko za veliko dodatnega denarja ne podaljšajo pričakovane življenjske dobe skoraj nič, če je zdravstven sistem v državi slabo razvit, medtem ko lahko države že z malo dodatnega denarja zelo povečajo pričakovano življenjsko dobo, če je zdravstven sistem dobro razvit. Glede sheme financiranja v Evropi močno prevladuje javno zdravstvo. Pokazala se je rahla pozitivna korelacija med večanjem deleža denarja v javnem zdravstvu in daljšanjem pričakovane življenjske dobe. To je vrjetno zato, ker države, ki več vlagajo v javno zdravstvo, imajo tudi bolje razvito javno zdravstvo, kar posledično pomeni boljšo oskrbo za paciente in daljšo življenjsko dobo. Prav tako se da opaziti, da se z daljšanjem življenjske dobe manjša delež samoplačništva, saj je javno zdravstvo v teh državah tako dobro, da pacienti ne potrebujejo samoplačništva. Videli smo tudi, da se z razvitostjo zdravstvenega sistema veča tudi delež prostovoljnega zdravstvenega zavarovanja, saj imajo ljudje zaupanje v zdravstveni sistem. 
+
+Zdravstvena ureditev torej do neke mere vpliva na pričakovano življenjsko dobo. Boljša zdravstvena ureditev vodi v daljšo življenjsko dobo, vendar hkrati zahteva tudi nekoliko več denarja, vendar je ta denar potrebno vlagati racionalno. Najbolj optimalna shema financiranja pa je s prevladujočim in dobro razvitim javnim zdravstvom.
 
 ***
 

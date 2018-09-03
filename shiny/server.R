@@ -2,7 +2,7 @@ library(shiny)
 library(ggplot2)
 
 shinyServer(function(input, output) {
-  output$zivlj1 <- renderPlot({
+  output$zivlj <- renderPlot({
     data <- pricakovana.zivljenjska.doba %>% filter(Leto %in% input$leto, 
                                                     Spol %in% input$spol,
                                                     Starost %in% input$starost)
@@ -12,6 +12,27 @@ shinyServer(function(input, output) {
            ylab="Pricakovana zivljenjska doba") +
       theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
   })
+  
+  output$funkc <- renderPlot({
+    data <- funkcije.zdravstvene.nege %>% filter(Leto %in% input$leto1, 
+                                                    Drzava %in% input$drzava)
+    ggplot(data, aes(x=Funkcija, y=Vrednost, color=Drzava)) +
+      geom_point() + 
+      labs(xlab="Funkcija", 
+           ylab="Izdatki") +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+  })
+  
+  #output$ponud <- renderPlot({
+  #  data <- ponudniki.zdravstvenih.storitev %>% filter(Leto %in% input$leto2, 
+  #                                                  Drzava %in% input$drzava1)
+  #  ggplot(data, aes(x=Ponudnik, y=Vrednost, color=Drzava)) +
+  #    geom_point() + 
+  #    labs(xlab="Ponudnik", 
+  #         ylab="Izdatki") +
+  #    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+  #})
+  
 })
 
 

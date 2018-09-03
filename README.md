@@ -11,7 +11,7 @@ Tabela 1: PRIČAKOVANA ŽIVLJENJSKA DOBA
  * stolpec 1: Leto (število)
  * stolpec 2: Država (faktor)
  * stolpec 3: Spol (faktor)
- * stolpec 4: Starost (število)
+ * stolpec 4: Starost (faktor)
  * stolpec 5: Pričakovana življenjska doba (realno število)
 
 Tabela 2: IZDATKI ZA POSAMEZNE FUNKCIJE ZDRAVSTVENE NEGE
@@ -21,29 +21,30 @@ Tabela 2: IZDATKI ZA POSAMEZNE FUNKCIJE ZDRAVSTVENE NEGE
  * stolpec 3: Funkcija (faktor)
  * stolpec 4: Izdatki za posamezno funkcijo (realno število)
 
-Tabela 3: IZDATKI PONUDNIKOV ZDRAVSTVENIH STORITEV
-
- * stolpec 1: Leto (število)
- * stolpec 2: Država (faktor)
- * stolpec 3: Ponudnik (faktor)
- * stolpec 4: Izdatki posameznih ponudnikov (realno število)
-
-Tabela 4: SHEME FINANCIRANJA ZDRAVSTVENIH STORITEV
+Tabela 3: SHEME FINANCIRANJA ZDRAVSTVENIH STORITEV
 
  * stolpec 1: Leto (število)
  * stolpec 2: Država (faktor)
  * stolpec 3: Shema financiranja (faktor)
  * stolpec 4: Izdatki (realno število)
 
+Tabela 4: IZDATKI PONUDNIKOV ZDRAVSTVENIH STORITEV
+
+ * stolpec 1: Leto (število)
+ * stolpec 2: Država (faktor)
+ * stolpec 3: Ponudnik (faktor)
+ * stolpec 4: Izdatki posameznih ponudnikov (realno število)
+
+
 Viri:
 
  * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_mlexpec&lang=en
 
  * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hc&lang=en
+ 
+ * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
 
  * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hp&lang=en
-
- * http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_sha11_hf&lang=en
 
 
 ## Program
